@@ -1,7 +1,9 @@
 class Play2 {
   create() {
-    this.player = this.physics.add.sprite(20, 215, "player");
-    this.coin = this.physics.add.sprite(970, 950, "coin");
+    this.player = this.physics.add.sprite(60, 35, "player");
+    this.coin = this.physics.add.sprite(780, 825, "coin");
+    this.enemy = this.physics.add.sprite(540, 385, "enemy");
+
     //this.player.body.gravity.y = 500;
     this.arrow = this.input.keyboard.createCursorKeys();
     this.createWorld();
@@ -21,6 +23,16 @@ class Play2 {
     });
 
     this.coinSound = this.sound.add("coin");
+
+    let particles = this.add.particles("pixel");
+
+    this.emitter = particles.createEmitter({
+      quantity: 15,
+      speed: { min: -150, max: 150 },
+      scale: { start: 2, end: 0.1 },
+      lifespan: 800,
+      on: false,
+    });
   }
 
   update() {
@@ -32,8 +44,11 @@ class Play2 {
     if (this.physics.overlap(this.player, this.coin)) {
       this.takeCoin();
     }
-    //console.log(this.player.body.x);
-    //console.log(this.player.body.y);
+    if (this.physics.overlap(this.player, this.enemy)) {
+      this.playertele();
+    }
+    console.log(this.player.body.x);
+    console.log(this.player.body.y);
   }
 
   movePlayer() {
@@ -76,5 +91,13 @@ class Play2 {
       duration: 100,
       yoyo: true,
     });
+  }
+
+  playertele() {
+    this.player.destroy();
+    this.emitter.setPosition(this.player.x, this.player.y);
+    this.emitter.explode();
+    this.player = this.physics.add.sprite(75, 550, "player");
+    //this.scene.start("menu", { score: this.score });
   }
 }

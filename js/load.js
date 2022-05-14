@@ -9,6 +9,8 @@ class Load {
     this.load.tilemapTiledJSON("map", "assets/map.json");
     this.load.tilemapTiledJSON("map2", "assets/map2.json");
     this.load.image("coin", "assets/coin.png");
+    this.load.image("enemy", "assets/enemy.png");
+    this.load.image("pixel", "assets/pixel.png");
     this.load.audio("coin", ["assets/coin.ogg", "assets/coin.mp3"]);
 
     let loadLabel = this.add.text(250, 170, "loading", {
