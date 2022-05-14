@@ -47,8 +47,8 @@ class Play2 {
     if (this.physics.overlap(this.player, this.enemy)) {
       this.playertele();
     }
-    console.log(this.player.body.x);
-    console.log(this.player.body.y);
+    //console.log(this.player.body.x);
+    //console.log(this.player.body.y);
   }
 
   movePlayer() {
@@ -90,6 +90,11 @@ class Play2 {
       scale: 1.3,
       duration: 100,
       yoyo: true,
+    });
+
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => this.scene.start("menu"),
     });
   }
 
