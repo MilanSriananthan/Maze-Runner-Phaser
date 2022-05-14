@@ -55,7 +55,7 @@ class Play2 {
   }
 
   createWorld() {
-    let map = this.add.tilemap("map");
+    let map = this.add.tilemap("map2");
     let tileset = map.addTilesetImage("tileset", "tileset");
     this.walls = map.createStaticLayer("Tile Layer 1", tileset);
     this.walls.setCollision(1);

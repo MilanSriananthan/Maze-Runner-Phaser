@@ -7,6 +7,7 @@ class Load {
     });
     this.load.image("tileset", "assets/tileset.png");
     this.load.tilemapTiledJSON("map", "assets/map.json");
+    this.load.tilemapTiledJSON("map2", "assets/map2.json");
     this.load.image("coin", "assets/coin.png");
     this.load.audio("coin", ["assets/coin.ogg", "assets/coin.mp3"]);
 
